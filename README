@@ -1,0 +1,14 @@
+To compile the ephylo R package:
+
+1) ensure that R is installed
+2) open a terminal
+3) cd into the directory containing this README file
+4) execute the following commands:
+     R CMD build .
+     R CMD INSTALL ephylo_1.0.tar.gz
+
+To get started using the package, start a new R session and type
+
+  > library(ephylo)
+  > ?ephylo
+  > ?`ephylo-package` 

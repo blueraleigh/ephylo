@@ -1,0 +1,18 @@
+Package: ephylo
+Type: Package
+Title: An Extended Phylogeny Structure for Analyses of Phylogenetics and Evolution
+Version: 1.0
+Date: 2024-11-11
+Authors@R: person(given = c("Michael", "C."),
+                  family = "Grundler",
+                  role = c("aut", "cre"),
+                  email = "mcgrundler@gmail.com")
+Maintainer: Michael C. Grundler <mcgrundler@gmail.com>
+Description: Extends the data structure for representing phylogenies 
+  implemented in the ape package with a quintuply-linked tree structure to 
+  facilitate tree traversals and other things.
+Depends: R (>= 3.5.0), ape, stats, utils
+NeedsCompilation: yes
+License: GPL-3
+Encoding: UTF-8
+RoxygenNote: 7.3.2
