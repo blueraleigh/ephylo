@@ -40,5 +40,16 @@ read_newick = function(file, text, num_tips)
     ephy$preorder.nodes = ephylo_preorder(ephy)
     ephy$postorder.nodes = ephylo_postorder(ephy)
     if (all(is.na(ephy$node.label))) ephy$node.label = NULL
+    desc = .Call(C_ephylo_track_descendants, 
+        ephy$num.tips,
+        ephy$num.nodes,
+        ephy$postorder.nodes,
+        ephy$left.child,
+        ephy$right.child,
+        ephy$right.sib
+    )
+    ephy$left.tip = desc[[1L]]
+    ephy$right.tip = desc[[2L]]
+    ephy$next.tip = desc[[3L]]
     return (ephy)
 }
