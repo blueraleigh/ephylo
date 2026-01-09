@@ -11,6 +11,7 @@ SEXP C_ephylo_preorder_tips(SEXP,SEXP,SEXP,SEXP,SEXP);
 SEXP C_ephylo_postorder(SEXP,SEXP,SEXP,SEXP,SEXP);
 SEXP C_ephylo_track_descendants(SEXP,SEXP,SEXP,SEXP,SEXP,SEXP);
 SEXP C_ephylo_read_newick(SEXP,SEXP);
+SEXP C_ephylo_ancestors(SEXP,SEXP);
 
 static const R_CallMethodDef CallEntries[] = {
     CALLDEF(C_ephylo, 5),
@@ -19,6 +20,7 @@ static const R_CallMethodDef CallEntries[] = {
     CALLDEF(C_ephylo_postorder, 5),
     CALLDEF(C_ephylo_track_descendants, 6),
     CALLDEF(C_ephylo_read_newick, 2),
+    CALLDEF(C_ephylo_ancestors, 2),
     {NULL, NULL, 0}
 };
 

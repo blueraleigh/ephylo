@@ -43,6 +43,18 @@ ephylo_tips = function(phy, root)
         phy$right.child, phy$left.sib)
 }
 
+#' Return the ancestors of each node
+#'
+#' @param phy An object inheriting from class \code{ephylo}.
+#' @return A list. Each element is an integer vector of node indices 
+#' corresponding to the ancestors of the node whose index matches its
+#' position in the list.
+ephylo_ancestors = function(phy)
+{
+    stopifnot(inherits(phy, "ephylo"))
+    .Call(C_ephylo_ancestors, phy$num.nodes, phy$parent)
+}
+
 #' Postorder tree traversal
 #'
 #' Visit the nodes of a phylogeny in postorder traversal sequence.

@@ -286,3 +286,33 @@ SEXP C_ephylo_track_descendants(
     UNPROTECT(3);
     return Rf_list3(r_left_tip, r_right_tip, r_next_tip);
 }
+
+
+SEXP C_ephylo_ancestors(SEXP r_num_nodes, SEXP r_parent)
+{
+    int num_nodes = *INTEGER(r_num_nodes);
+    int *parent = INTEGER(r_parent);
+
+    int *ancestors = (int *) R_alloc(num_nodes, sizeof(*ancestors));
+    SEXP r_ancestors = PROTECT(Rf_allocVector(VECSXP, num_nodes));
+
+    int u;
+    int v;
+    int k ;
+    
+    for (v = 0; v < num_nodes; ++v)
+    {
+        k = 0;
+        u = parent[v] - 1;
+        while (u != -1)
+        {
+            ancestors[k++] = u;
+            u = parent[u] - 1;
+        }
+        SET_VECTOR_ELT(r_ancestors, v, Rf_allocVector(INTSXP, k));
+        Memcpy(INTEGER(VECTOR_ELT(r_ancestors, k)), ancestors, k);
+    }
+
+    UNPROTECT(1);
+    return r_ancestors;
+}
