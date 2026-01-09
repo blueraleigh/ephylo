@@ -6,9 +6,6 @@
 \alias{C_ephylo_preorder}
 \alias{C_ephylo_preorder_tips}
 \alias{C_ephylo_read_newick}
-\alias{C_mkcor_em}
-\alias{C_mkcor_loglik}
-\alias{C_mkcor_simulate}
 \alias{C_ephylo_track_descendants}
 \title{Call routine to internal C function}
 \description{
