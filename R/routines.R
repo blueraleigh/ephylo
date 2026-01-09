@@ -19,18 +19,6 @@ NULL
 #' @rdname callroutine
 NULL
 
-#' @name C_mkcor_em
-#' @rdname callroutine
-NULL
-
-#' @name C_mkcor_loglik
-#' @rdname callroutine
-NULL
-
-#' @name C_mkcor_simulate
-#' @rdname callroutine
-NULL
-
 #' @name C_ephylo_track_descendants
 #' @rdname callroutine
 NULL
