@@ -291,7 +291,7 @@ SEXP C_ephylo_track_descendants(
 SEXP C_ephylo_ancestors(SEXP r_num_nodes, SEXP r_parent)
 {
     int num_nodes = *INTEGER(r_num_nodes);
-    int *parent = INTEGER(r_parent);
+    const int *restrict parent = INTEGER(r_parent);
 
     int *ancestors = (int *) R_alloc(num_nodes, sizeof(*ancestors));
     SEXP r_ancestors = PROTECT(Rf_allocVector(VECSXP, num_nodes));
@@ -310,7 +310,7 @@ SEXP C_ephylo_ancestors(SEXP r_num_nodes, SEXP r_parent)
             u = parent[u] - 1;
         }
         SET_VECTOR_ELT(r_ancestors, v, Rf_allocVector(INTSXP, k));
-        Memcpy(INTEGER(VECTOR_ELT(r_ancestors, k)), ancestors, k);
+        Memcpy(INTEGER(VECTOR_ELT(r_ancestors, v)), ancestors, k);
     }
 
     UNPROTECT(1);
