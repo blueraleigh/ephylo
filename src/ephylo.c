@@ -306,7 +306,7 @@ SEXP C_ephylo_ancestors(SEXP r_num_nodes, SEXP r_parent)
         u = parent[v] - 1;
         while (u != -1)
         {
-            ancestors[k++] = u;
+            ancestors[k++] = u + 1;
             u = parent[u] - 1;
         }
         SET_VECTOR_ELT(r_ancestors, v, Rf_allocVector(INTSXP, k));
