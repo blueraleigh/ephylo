@@ -25,9 +25,9 @@ typedef struct tree {
     const int *right_child;
     const int *left_sib;
     const int *right_sib;
-    const int *left_sample;
-    const int *right_sample;
-    const int *next_sample;
+    const int *left_tip;
+    const int *right_tip;
+    const int *next_tip;
     const double *time;
     const double *brlen;
     const int *preorder_nodes;
@@ -89,9 +89,9 @@ ephylo_tree(tree_t *tree, SEXP ephy)
     tree->right_child = EPHYLO_INTEGER_ELT(ephy, "right.child");
     tree->left_sib = EPHYLO_INTEGER_ELT(ephy, "left.sib");
     tree->right_sib = EPHYLO_INTEGER_ELT(ephy, "right.sib");
-    tree->left_sample = EPHYLO_INTEGER_ELT(ephy, "left.sample");
-    tree->right_sample = EPHYLO_INTEGER_ELT(ephy, "right.sample");
-    tree->next_sample = EPHYLO_INTEGER_ELT(ephy, "next.sample");
+    tree->left_tip = EPHYLO_INTEGER_ELT(ephy, "left.tip");
+    tree->right_tip = EPHYLO_INTEGER_ELT(ephy, "right.tip");
+    tree->next_tip = EPHYLO_INTEGER_ELT(ephy, "next.tip");
     tree->time = EPHYLO_REAL_ELT(ephy, "time");
     tree->brlen = EPHYLO_REAL_ELT(ephy, "brlen");
     tree->preorder_nodes = EPHYLO_INTEGER_ELT(ephy, "preorder.nodes");
