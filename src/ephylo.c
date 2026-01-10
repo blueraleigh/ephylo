@@ -49,6 +49,7 @@ C_ephylo(
         if (left_child[u] == 0)
         {
             left_child[u] = v1;
+            right_child[u] = v1;
         }
         else
         {
