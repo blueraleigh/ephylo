@@ -7,6 +7,7 @@
 \alias{C_ephylo_preorder_tips}
 \alias{C_ephylo_read_newick}
 \alias{C_ephylo_track_descendants}
+\alias{C_ephylo_ancestors}
 \title{Call routine to internal C function}
 \description{
 Call routine to internal C function

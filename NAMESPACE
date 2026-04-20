@@ -3,8 +3,7 @@ exportPattern("^[[:alpha:]]+")
 
 
 importFrom(ape, as.phylo, keep.tip, drop.tip)
-importFrom(stats, reorder, optim, optimHess, runif, setNames)
-importFrom(utils, tail)
+importFrom(stats, reorder)
 
 S3method(as.ephylo, phylo)
 S3method(as.ephylo, multiPhylo)

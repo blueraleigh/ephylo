@@ -22,3 +22,7 @@ NULL
 #' @name C_ephylo_track_descendants
 #' @rdname callroutine
 NULL
+
+#' @name C_ephylo_ancestors
+#' @rdname callroutine
+NULL
