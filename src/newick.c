@@ -287,7 +287,7 @@ newick_read(newick_reader_t *reader)
         newick_maybe_realloc(reader);
         switch (c)
         {
-            case '(': // starting a new clade
+            case '(': // starting a new clade, child of the current clade
                 u = reader->curnode;
                 v = reader->num_nodes;
                 reader->left_child[v] = -1;
@@ -311,7 +311,7 @@ newick_read(newick_reader_t *reader)
                 reader->num_nodes += 1;
                 ++paren;
                 break;
-            case ',': // starting a new clade sibling to the current clade
+            case ',': // starting a new clade, sibling of the current clade
                 u = reader->curnode;
                 v = reader->num_nodes;
                 reader->left_child[v] = -1;
