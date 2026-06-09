@@ -10,9 +10,12 @@
 read_newick = function(file, text, num_tips)
 {
     bufsize = if (missing(num_tips)) 8192L else as.integer(2L*num_tips)
-    if (!missing(file)) {
+    if (!missing(file))
+    {
         filename = normalizePath(file, mustWork=TRUE)
-    } else {
+    }
+    else
+    {
         stopifnot(!missing(text))
         filename = tempfile()
         cat(text, file=filename)

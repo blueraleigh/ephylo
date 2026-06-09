@@ -101,14 +101,17 @@ ephylo_rclade = function(phy, min.size, max.size, replace=FALSE,
     num_nodes = phy$num.nodes
     ancestors = phy$root:num_nodes
     if (!include.root)
+    {
         ancestors = ancestors[-1L]
+    }
     ndesc = sapply(ancestors, function(n) length(ephylo_tips(phy, n)))
     keep = which(ndesc >= min.size & ndesc <= max.size)
     ndesc = ndesc[keep]
     ancestors = ancestors[keep]
     w = 1 / table(ndesc)
     sample_weights = unname(w[match(ndesc, as.integer(names(w)))])
-    function(n) {
+    function(n)
+    {
         stopifnot(n >= 1)
         subtrees = sample(
             ancestors, size=n, replace=replace, prob=sample_weights)

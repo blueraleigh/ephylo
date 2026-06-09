@@ -180,7 +180,9 @@ newick_getc(newick_reader_t *reader)
 {
     int c = fgetc(reader->newickfile);
     while (isspace(c))
+    {
         c = fgetc(reader->newickfile);
+    }
     return c;
 }
 
@@ -200,7 +202,9 @@ newick_read_brlen(newick_reader_t *reader)
     {
         int has_brlen = fscanf(reader->newickfile, "%lf", &reader->brlen);
         if (has_brlen)
+        {
             reader->edge_len[reader->curnode] = reader->brlen;
+        }
     }
     else
     {
@@ -399,9 +403,13 @@ C_ephylo_read_newick(SEXP filename, SEXP bufsize)
             stack[stack_top] = v;
         }
         if (ISTIP(u))
+        {
             index_map[u] = ntip++;
+        }
         else
+        {
             index_map[u] = nnode++;
+        }
     }
     SEXP r_parent = PROTECT(Rf_allocVector(INTSXP, num_nodes));
     SEXP r_left_child = PROTECT(Rf_allocVector(INTSXP, num_nodes));
@@ -426,33 +434,57 @@ C_ephylo_read_newick(SEXP filename, SEXP bufsize)
             stack[stack_top] = v;
         }
         if (ISTIP(u))
+        {
             r_index = index_map[u];
+        }
         else
+        {
             r_index = index_map[u] + ntip;
+        }
         if (parent[u] != -1)
+        {
             SET_INTEGER_ELT(r_parent, r_index, index_map[parent[u]] + 1 + ntip);
+        }
         else
+        {
             SET_INTEGER_ELT(r_parent, r_index, 0);
+        }
         if (left_child[u] != -1)
+        {
             SET_INTEGER_ELT(r_left_child, r_index, 
                 index_map[left_child[u]] + 1 + (1 - ISTIP(left_child[u])) * ntip);
+        }
         else
+        {
             SET_INTEGER_ELT(r_left_child, r_index, 0);
+        }
         if (right_child[u] != -1)
+        {
             SET_INTEGER_ELT(r_right_child, r_index,
                 index_map[right_child[u]] + 1 + (1 - ISTIP(right_child[u])) * ntip);
+        }
         else
+        {
             SET_INTEGER_ELT(r_right_child, r_index, 0);
+        }
         if (left_sib[u] != -1)
+        {
             SET_INTEGER_ELT(r_left_sib, r_index,
                 index_map[left_sib[u]] + 1 + (1 - ISTIP(left_sib[u])) * ntip);
+        }
         else
+        {
             SET_INTEGER_ELT(r_left_sib, r_index, 0);
+        }
         if (right_sib[u] != -1)
+        {
             SET_INTEGER_ELT(r_right_sib, r_index,
                 index_map[right_sib[u]] + 1 + (1 - ISTIP(right_sib[u])) * ntip);
+        }
         else
+        {
             SET_INTEGER_ELT(r_right_sib, r_index, 0);
+        }
         SET_REAL_ELT(r_edge_len, r_index, edge_len[u]);
         SET_STRING_ELT(r_node_label, r_index, STRING_ELT(node_label, u));
         if (parent[u] == -1) continue;

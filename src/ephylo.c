@@ -215,7 +215,9 @@ SEXP C_ephylo_preorder_tips(
     {
         u = stack[stack_top];
         if (u <= num_tips)
+        {
             preorder[k++] = u + 1;
+        }
         --stack_top;
         for (v = (right_child[u]-1); v != -1; v = (left_sib[v]-1))
         {
